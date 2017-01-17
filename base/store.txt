@@ -1,0 +1,6 @@
+addProducts(newProducts: IProduct[])
+Permet de rajouter les nouveaux produits au stock
+
+getProduct(id: string, client: Bankable): IProduct {}
+Retourne le produit correspondant a l'id passé en paramètre, le client est alors debité via spendMoney et le stock est mis à jour.
+Si le produit n'existe pas, ou le solde du client n'est pas suffisant, null doit être retourné
