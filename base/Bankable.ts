@@ -11,4 +11,5 @@ export abstract class Bankable {
 	public get bankId(): number
 	//Ne permet pas le changement d'id
 	public set bankId(newNumber: number)
+	abstract get total(): number
 }
