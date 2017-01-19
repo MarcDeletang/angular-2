@@ -1,0 +1,7 @@
+<div>
+	<input-output-child [fromParent]="parentValue" (onSubmit)="onChildSubmit($event)"></input-output-child>
+	<div *ngFor="let message of messages">
+		{{ message }}
+	</div>
+</div>
+<app-form></app-form>
