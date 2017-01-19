@@ -1,0 +1,11 @@
+<div>
+	<h1>
+		{{title}}
+	</h1>
+	<button (click)="onClick()">Ajouter un item</button>
+
+	<div *ngFor="let item of container.items">
+		{{ item.id }}
+	</div>
+
+</div>
