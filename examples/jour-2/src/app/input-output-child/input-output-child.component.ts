@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 export class InputOutputChildComponent{
   @Input() fromParent: string
   //Event emitter from angular, templated on string (can only emit string)
-  @Output() onSubmit = new EventEmitter()
+  @Output() onSubmit = new EventEmitter<string>()
   i = 0
 
   onClick(data: string){
