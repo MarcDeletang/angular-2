@@ -1,10 +1,22 @@
-import { Component } from '@angular/core'
-import { Foo } from './DIFail/fail'
-import { Order } from './data/order'
-import { Product } from './data/product'
-import { Restaurant } from './data/restaurant'
-import { Store } from './data/store'
-
+import {
+	Component
+} from '@angular/core'
+import {
+	Foo
+} from './DIFail/fail'
+import {
+	Order
+} from './data/order'
+import {
+	Product
+} from './data/product'
+import {
+	Restaurant
+} from './data/restaurant'
+import {
+	Store
+} from './data/store'
+import * as _ from "lodash"
 //var fail  = new Foo()
 
 
@@ -12,24 +24,54 @@ import { Store } from './data/store'
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css']
+	styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
 	message = 'Bonjour !'
-	mySize = 42
-	order = new Order('order 1', [new Product('name', 42)], this.onOrder)
-	store = new Store()
-	restaurant = new Restaurant(this.store)
+	selected: Product[] = []
 
-	onOrder(order: Order, isReady: boolean, message: string){
+	constructor(private store: Store) {
+	}
+
+	onOrder(order: Order, isReady: boolean, message: string) {
 		console.log('onOrder', order, isReady, message)
 	}
 
-	onClick(value: string){
-		this.store.addProducts(this.order.products)
-		this.restaurant.passOrder(this.order)
+	onClick(value: string) {
 		console.log('input value', value)
-		this.mySize += 10
+		console.log(this.store)
+	}
+
+	elemClicked(product: Product) {
+		let idx = _.findIndex(this.selected, {
+			id: product.id
+		})
+		if (idx == -1)
+			this.selected.push(product)
+		else
+			this.selected.splice(idx, 1)
+	}
+
+	getProductClass(product: Product) {
+		let idx = _.findIndex(this.selected, {
+			id: product.id
+		})
+		if (idx != -1)
+			return 'success'
+	}
+
+	clear() {
+		this.selected = []
+	}
+
+	remove() {
+		for (let i = 0; i != this.selected.length; ++i) {
+			let idx = _.findIndex(this.store.products, {
+				id: this.selected[i].id
+			})
+			if (idx != -1)
+				this.store.products.splice(idx, 1)
+		}
 	}
 
 }

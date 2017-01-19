@@ -1,16 +1,26 @@
-<div>
-	I can do additions: {{ 1 + 41 }}
-	<br>
-	And show variables: {{ message }}
-	<br>
-	{{ 'HI IM A PIPE' | lower }}
-	<br>
-	<input #inputVal>
-	<br>
-	{{ inputVal.value }}
-	<br>
-	<button [style.width.px]="mySize" (click)="onClick(inputVal.value)">Click me !</button>
-</div>
-<app-input-output *ngIf="false"></app-input-output>
+<br>
+<br>
+<app-input-product></app-input-product>
+<br>
+<br>
+
+<table class="table table-bordered">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Type</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let product of store.products" (click)="elemClicked(product)" [ngClass]="getProductClass(product)">
+			<td>{{ product.id }}</td>
+			<td>{{ product.name }}</td>
+			<td>{{ product.price }}</td>
+			<td>{{ product.type }}</td>
+		</tr>
+	</tbody>
+</table>
+<button class="btn btn-info" (click)="clear()">Clear selection</button>
+<button class="btn btn-danger"(click)="remove()">Remove selection</button>
 
 <p appHighlight>Hi i'm hilighted</p>

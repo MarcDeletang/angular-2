@@ -10,6 +10,10 @@ import { InputOutputChildComponent } from './input-output-child/input-output-chi
 import { LowerPipe } from './lower.pipe';
 import { FormComponent } from './form/form.component';
 import { HighlightDirective } from './highlight.directive';
+import { InputProductComponent } from './input-product/input-product.component';
+
+import { Restaurant } from './data/restaurant'
+import { Store } from './data/store'
 
 @Injectable()
 export class Test{
@@ -24,14 +28,15 @@ export class Test{
     InputOutputChildComponent,
     LowerPipe,
     FormComponent,
-    HighlightDirective
+    HighlightDirective,
+    InputProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [Test],
+  providers: [Restaurant, Store, Test],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -11,7 +11,7 @@ import {
 
 @Injectable()
 export class Store {
-	private readonly products: IProduct[] = []
+	public readonly products: IProduct[] = []
 	public readonly name: string = 'Amazing Store'
 
 	constructor() {}
