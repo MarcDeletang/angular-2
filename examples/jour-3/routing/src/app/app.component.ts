@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContainerService } from './container.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = "I'm the root, i don't do much"
+
+  constructor(private container: ContainerService){
+
+  }
 }

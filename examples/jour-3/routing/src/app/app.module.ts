@@ -9,6 +9,7 @@ import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthCheckerService } from './auth-checker.service'
+import { ContainerService } from './container.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AuthCheckerService } from './auth-checker.service'
       path: 'admin/:data', component: AdminComponent, canActivate: [AuthCheckerService]
     }])
   ],
-  providers: [AuthCheckerService],
+  providers: [AuthCheckerService, ContainerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

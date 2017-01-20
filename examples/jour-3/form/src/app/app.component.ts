@@ -10,9 +10,9 @@ export class AppComponent {
 
   constructor(fb: FormBuilder){
     this.complexForm = fb.group({
-      'firstName' : [null, Validators.required],
-      'lastName': [null,  Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
-      'gender' : [null, Validators.required],
+      'firstName' : ['this is a test', Validators.required],
+      'lastName': [true,  Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
+      'gender' : [42, Validators.required],
       'hiking' : [false],
       'running' : [false],
       'swimming' : [false]
@@ -24,6 +24,8 @@ export class AppComponent {
   }
 
   submitForm(value: any){
-    console.log(value)
+    this.complexForm.value
+    console.log('submit:', value)
+    this.complexForm.reset()
   }
 }

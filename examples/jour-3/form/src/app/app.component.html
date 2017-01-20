@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<!-- <div class="jumbotron">
 	<h2>Form with Validations</h2>
 	<form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
 		<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched}">
@@ -39,10 +39,10 @@
 			<input type="checkbox" value="swimming" name="swimming" [formControl]="complexForm.controls['swimming']"> Swimming
 		</label>
 		<label class="checkbox-inline">
-			<input type="checkbox" value="running" name="running" [formControl]="complexForm.controls['running']"> Running
+			<input type="checkbox" value="running" name="running"> Running
 		</label>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit</button>
 		</div>
 	</form>
-</div>
+</div> -->

@@ -1,10 +1,8 @@
-import {
-	Component,
-	OnInit
-} from '@angular/core'
-import {
-	ActivatedRoute
-} from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+
+import { ContainerService, IProduct, Product } from '../container.service';
+
 
 @Component({
 	selector: 'app-admin',
@@ -12,15 +10,17 @@ import {
 	styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-	message: string
+	product: Product
 	private sub: any
 
-	constructor(private route: ActivatedRoute) {
+
+	constructor(private route: ActivatedRoute, private container: ContainerService) {
+
 	}
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
-			this.message = params['data']
+			this.product = this.container.items.find(x => x && x.id == params['data'] )
 		})
 	}
 

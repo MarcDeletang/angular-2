@@ -15,10 +15,12 @@ export class AuthCheckerService implements CanActivate {
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  boolean {
 		//Check user token in real life
-		if (route.params['data'] && route.params['data'] == 'admin')
+/*		if (route.params['data'] && route.params['data'] == 'admin')
 			return true
+		console.log(route)
 		this.router.navigateByUrl('/')
-		return false
+		return false*/
+		return true
 	}
 
 }

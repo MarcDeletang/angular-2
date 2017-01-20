@@ -2,3 +2,20 @@
 	Hi i'm the list
 	<button class="btn btn-info" routerLink="/new">Go to create page</button>
 </div>
+
+<table class="table table-bordered">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Type</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let product of container.items" (click)="elemClicked(product)" [ngClass]="getProductClass(product)">
+			<td>{{ product.id }}</td>
+			<td>{{ product.name }}</td>
+			<td>{{ product.price }}</td>
+			<td>{{ product.type }}</td>
+		</tr>
+	</tbody>
+</table>
