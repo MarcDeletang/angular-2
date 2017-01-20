@@ -14,9 +14,9 @@ export class ContainerService {
 	create(data, onSuccess = null, onError = null) {
 		return this.client.post(this.url, data).subscribe(result => {
 			console.log(result)
+			this.items.push(result.json())
 			if (onSuccess)
 				onSuccess(result)
-			this.items.push(result.json())
 		},
 		error => {
 			if (onError)

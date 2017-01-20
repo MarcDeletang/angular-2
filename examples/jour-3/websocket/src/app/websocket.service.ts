@@ -6,7 +6,7 @@ declare let io
 
 @Injectable()
 export class WebsocketService {
-  private readonly url = 'http://localhost:5000'
+  private readonly url = 'http://52.213.184.59:1338'
   private socket
 
   sendMessage(sender, message){

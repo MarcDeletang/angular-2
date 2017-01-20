@@ -1,10 +1,9 @@
 let app = require('express')();
 let http = require('http').Server(app);
-let io = require('socket.io')(http);
+let io = require('socket.io')(http, { origins: '*:*'})
 let _ = require('lodash')
 
 let clients = []
-
 io.on('connection', (socket) => {
     clients.push(socket)
   console.log('user connected', socket)
@@ -14,10 +13,10 @@ io.on('connection', (socket) => {
   })
 
   socket.on('add-message', (message) => {
-    io.emit('message', message);
+    io.emit('message', message)
   })
 })
 
-http.listen(5000, () => {
-  console.log('started on port 5000');
+http.listen(1338, () => {
+  console.log('started on port 1338')
 })
