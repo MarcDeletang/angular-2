@@ -2,7 +2,7 @@
 	{{title}}
 </h1>
 <div *ngFor="let message of messages">
-	Message from {{message.sender}}: <span [innerHTML]="message.message"> </span> <!-- {{ message.message }} -->
+	Message from {{message.sender}}: <span > {{ message.message }} </span> <!-- {{ message.message }} -->
 </div>
 <br>
 <label>Sender</label>

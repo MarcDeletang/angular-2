@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {
+	Injectable
+} from '@angular/core';
+import {
+	Http
+} from '@angular/http';
 
 import 'rxjs/add/operator/map'
 
@@ -8,7 +12,43 @@ export class ContainerService {
 	readonly url: string = 'http://127.0.1:1338/item'
 	items = []
 
-	constructor(private client: Http) {
+	constructor(private client: Http) {}
+
+	edit(id, data, onSuccess = null, onError = null){
+		return this.client.put(this.url + '/' + id, data).subscribe(result => {
+			console.log(result)
+			let resultObj = result.json()
+			let idx = -1
+			if (resultObj.id)
+				idx = this.items.findIndex(x => x.id == resultObj.id)
+			if (idx != -1)
+				this.items[idx] = resultObj
+			if (onSuccess)
+				onSuccess(result)
+		},
+		error => {
+			if (onError)
+				onError(error)
+			console.log('error', error)
+		})
+	}
+
+	remove(id, onSuccess = null, onError = null) {
+		return this.client.delete(this.url + '/' + id).subscribe(result => {
+			console.log(result)
+			let resultObj = result.json()
+			let idx = -1
+			if (resultObj.id)
+				idx = this.items.findIndex(x => x.id == resultObj.id)
+			this.items.splice(idx, 1)
+			if (onSuccess)
+				onSuccess(result)
+		},
+		error => {
+			if (onError)
+				onError(error)
+			console.log('error', error)
+		})
 	}
 
 	create(data, onSuccess = null, onError = null) {

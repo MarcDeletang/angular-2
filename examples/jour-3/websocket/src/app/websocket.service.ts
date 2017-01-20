@@ -11,6 +11,7 @@ export class WebsocketService {
 
   sendMessage(sender, message){
     this.socket.emit('add-message', { sender: sender, message: message })
+    this.socket.emit('add-message2', { sender: sender, message: message })
   }
 
   getMessages() {

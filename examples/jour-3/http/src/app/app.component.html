@@ -1,11 +1,54 @@
 <div>
-	<h1>
-		{{title}}
-	</h1>
-	<button (click)="onClick()">Ajouter un item</button>
+	<app-input-item></app-input-item>
 
-	<div *ngFor="let item of container.items">
-		{{ item.id }}
+	<table class="table table-bordered">
+		<thead>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Type</th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of container.items" (click)="onItem(item)" [ngClass]="getClass(item)">
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.price }}</td>
+				<td>{{ item.type }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+<div class="form-group" style="margin:0px 100px; text-align:center;">
+
+	<div class="input-group">
+		<div class="input-group-addon">Id</div>
+		<input [value]="selected?.id" class="form-control" disabled="disabled">
 	</div>
+	<br />
+
+	<div class="input-group">
+		<div class="input-group-addon">Name</div>
+		<input  #inputName [value]="selected?.name" class="form-control">
+	</div>
+	<br />
+
+	<div class="input-group">
+		<div class="input-group-addon">Price</div>
+		<input #inputPrice [value]="selected?.price" type="text" class="form-control">
+	</div>
+	<br />
+
+	<div class="input-group">
+		<div class="input-group-addon">Type</div>
+		<input #inputType [value]="selected?.type" class="form-control">
+	</div>
+	<br />
+
+	<p>
+		<button class="btn btn-error" (click)="onRemove()">Remove item</button>
+		<button class="btn btn-info" (click)="onEdit(inputName.value, inputPrice.value, inputType.value)">Edit item</button>
+	</p>
+
+</div>
 
 </div>

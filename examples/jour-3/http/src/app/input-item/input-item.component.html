@@ -1,0 +1,15 @@
+<div>
+	Input Output
+	<div class="container">
+		<div class="col-xs-4">
+			<input #name class="form-control" placeholder="name">
+		</div>
+		<div class="col-xs-4">
+			<input #type class="form-control"  placeholder="type">
+		</div>
+		<div class="col-xs-4">
+			<input #price class="form-control"  placeholder="price">
+		</div>
+	</div>
+	<button class="btn btn-success" (click)="onClick(name.value, type.value, price.value)">Add an item</button>
+</div>
